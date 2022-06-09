@@ -1,6 +1,8 @@
 package ru.netology.stats;
 
 
+import static java.lang.Long.sum;
+
 public class StatsServiceSales {
     public int minSales(int[] sales) {
         int minMonth = 0;
@@ -31,7 +33,7 @@ public class StatsServiceSales {
     public int amountSales(int[] sale) {
 
         int sum = 0;
-        for (int value : sale) {
+        for (long value : sale) {
             sum += value;
         }
 
@@ -42,9 +44,9 @@ public class StatsServiceSales {
     public int averageSales(int[] sale) {
 
         int average = 0;
-        int sum = 0;
-        for (int value : sale) {
-            sum += value;
+        int sum = amountSales(sale);
+        for (long value : sale) {
+
             average = sum / sale.length;
 
         }
@@ -57,12 +59,9 @@ public class StatsServiceSales {
     public int minAverageSales(int[] sale) {
 
         int minAverage = 0;
-        int average = 0;
-        int sum = 0;
-        for (int value : sale) {
-            sum += value;
-            average = sum / sale.length;
-        }
+        int average = averageSales(sale);
+        int sum = amountSales(sale);
+
 
         for (int t : sale) {
             if (t < average) {
@@ -79,12 +78,9 @@ public class StatsServiceSales {
     public int maxAverageSales(int[] sale) {
 
         int maxAverage = 0;
-        int average = 0;
-        int sum = 0;
-        for (int value : sale) {
-            sum += value;
-            average = sum / sale.length;
-        }
+        int average = averageSales(sale);
+        int sum = amountSales(sale);
+
 
         for (int t : sale) {
             if (t > average) {
